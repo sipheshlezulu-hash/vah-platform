@@ -1,17 +1,17 @@
 {
   "name": "vah-afrika-store",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest"
+    "next": "16.3.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "@tailwindcss/postcss": "latest"
   },
   "devDependencies": {
     "typescript": "latest",
@@ -21,6 +21,5 @@
     "tailwindcss": "latest",
     "postcss": "latest",
     "autoprefixer": "latest"
-    "@tailwindcss/postcss": "latest"
   }
 }
