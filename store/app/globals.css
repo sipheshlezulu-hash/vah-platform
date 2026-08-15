@@ -1,7 +1,5 @@
+@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 :root { --cream:#f4f0e8; --ink:#171715; --muted:#6d6a62; --line:rgba(23,23,21,.12); }
 * { box-sizing:border-box; }
