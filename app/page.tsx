@@ -1,0 +1,38 @@
+"use client"
+
+import { useState } from 'react'
+import { Bot, CheckCircle2, ChevronRight, CircleDot, FileText, LayoutDashboard, MessageSquare, Plus, Search, Settings, Sparkles, Target, Users, Zap } from 'lucide-react'
+
+const agents = [
+  {name:'VAH Chief', role:'Orchestrator', status:'Working', tasks:12, rate:'98%'},
+  {name:'Growth Agent', role:'Opportunities & strategy', status:'Working', tasks:8, rate:'94%'},
+  {name:'Marketing Agent', role:'Campaigns & marketing', status:'Working', tasks:14, rate:'96%'},
+  {name:'Customer Agent', role:'Support & responses', status:'Waiting', tasks:7, rate:'97%'},
+  {name:'Research Agent', role:'Research & intelligence', status:'Working', tasks:5, rate:'92%'},
+]
+
+export default function Home() {
+  const [prompt, setPrompt] = useState('')
+  const [notice, setNotice] = useState('')
+  const run = () => { if (!prompt.trim()) return; setNotice('VAH Chief is routing your task to the best agent…'); setTimeout(()=>setNotice('Task created. Marketing Agent is preparing your result.'),900); setPrompt('') }
+  return <main className="flex min-h-screen">
+    <aside className="hidden w-64 shrink-0 border-r border-[#20242b] bg-[#0b0c0f] p-4 md:block">
+      <div className="mb-8 flex items-center gap-3 px-2"><div className="grid h-9 w-9 place-items-center rounded-xl bg-white text-black font-black">V</div><div><div className="font-semibold">VAH</div><div className="text-xs text-zinc-500">Labs · AgentOS</div></div></div>
+      <nav className="space-y-1 text-sm">
+        {[[LayoutDashboard,'Overview'],[Bot,'AgentOS'],[Users,'My Agents'],[CircleDot,'Tasks'],[CheckCircle2,'Approvals'],[FileText,'Knowledge'],[Zap,'Workflows'],[Target,'Integrations'],[Sparkles,'Analytics']].map(([I,label])=><div key={label as string} className={'flex items-center gap-3 rounded-lg px-3 py-2.5 '+(label==='AgentOS'?'bg-white/8 text-white':'text-zinc-400 hover:bg-white/5 hover:text-white')}><I size={17}/>{label as string}</div>)}
+      </nav>
+      <div className="mt-8 border-t border-[#20242b] pt-4 text-sm text-zinc-400"><div className="px-3 py-2">Agent Marketplace</div><div className="px-3 py-2">Academy</div></div>
+      <div className="absolute bottom-4 flex items-center gap-3 px-2 text-sm text-zinc-500"><Settings size={16}/> Settings</div>
+    </aside>
+    <section className="min-w-0 flex-1">
+      <header className="flex items-center justify-between border-b border-[#20242b] px-5 py-4 md:px-8"><div className="flex items-center gap-3 md:hidden"><div className="font-bold">VAH AgentOS</div></div><div className="hidden text-sm text-zinc-500 md:block">Wednesday, September 9 · Johannesburg</div><div className="flex items-center gap-3"><div className="hidden rounded-lg border border-[#20242b] px-3 py-2 text-xs text-zinc-500 sm:flex sm:items-center sm:gap-2"><Search size={14}/> Search</div><div className="h-8 w-8 rounded-full bg-zinc-700"/></div></header>
+      <div className="mx-auto max-w-7xl p-5 md:p-8">
+        <div className="mb-8 flex flex-col justify-between gap-5 lg:flex-row lg:items-end"><div><div className="mb-2 flex items-center gap-2 text-sm text-zinc-500"><Sparkles size={15}/> VAH Labs</div><h1 className="text-3xl font-semibold tracking-tight md:text-4xl">Your AI team is working.</h1><p className="mt-2 max-w-2xl text-zinc-400">Build your AI team. Run your business. Grow beyond yourself.</p></div><button className="flex w-fit items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-black"><Plus size={17}/> Create agent</button></div>
+        <div className="mb-8 rounded-2xl border border-[#20242b] bg-[#101216] p-4 md:p-5"><div className="mb-3 flex items-center gap-2 text-sm font-medium"><MessageSquare size={16}/> Give VAH a task</div><div className="flex flex-col gap-3 sm:flex-row"><input value={prompt} onChange={e=>setPrompt(e.target.value)} onKeyDown={e=>e.key==='Enter'&&run()} placeholder="e.g. Create a launch campaign for our new collection" className="min-w-0 flex-1 rounded-xl border border-[#292e37] bg-[#090a0d] px-4 py-3 text-sm outline-none placeholder:text-zinc-600 focus:border-zinc-500"/><button onClick={run} className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-black">Run task</button></div>{notice&&<div className="mt-3 text-xs text-zinc-400">{notice}</div>}</div>
+        <div className="mb-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">{[['Revenue','R42,850','+18%'],['Leads','126','+24%'],['Tasks automated','78%','+11%'],['Time saved','21.4 hrs','this week']].map(([a,b,c])=><div key={a} className="rounded-2xl border border-[#20242b] bg-[#101216] p-5"><div className="text-sm text-zinc-500">{a}</div><div className="mt-2 text-2xl font-semibold">{b}</div><div className="mt-2 text-xs text-zinc-500">{c}</div></div>)}</div>
+        <div className="grid gap-6 xl:grid-cols-[1.5fr_1fr]"><div className="rounded-2xl border border-[#20242b] bg-[#101216]"><div className="flex items-center justify-between border-b border-[#20242b] p-5"><div><h2 className="font-semibold">Your AI team</h2><p className="mt-1 text-xs text-zinc-500">Specialists working toward your goals</p></div><button className="text-xs text-zinc-400">View all <ChevronRight className="inline" size={13}/></button></div><div className="divide-y divide-[#20242b]">{agents.map(a=><div key={a.name} className="flex items-center gap-4 p-4"><div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white/6"><Bot size={18}/></div><div className="min-w-0 flex-1"><div className="font-medium text-sm">{a.name}</div><div className="text-xs text-zinc-500">{a.role}</div></div><div className="hidden text-right sm:block"><div className="text-xs">{a.tasks} tasks</div><div className="text-[11px] text-zinc-500">{a.rate} success</div></div><div className="flex items-center gap-1.5 text-xs text-zinc-400"><span className="h-2 w-2 rounded-full bg-emerald-400"/>{a.status}</div></div>)}</div></div>
+        <div className="space-y-6"><div className="rounded-2xl border border-[#20242b] bg-[#101216] p-5"><div className="mb-5 flex items-center justify-between"><h2 className="font-semibold">Today's briefing</h2><span className="rounded-full bg-white/6 px-2 py-1 text-[11px] text-zinc-400">3 items</span></div><div className="space-y-4"><div className="flex gap-3"><span className="mt-1 h-2 w-2 rounded-full bg-amber-400"/><div><div className="text-sm">2 approvals waiting</div><div className="text-xs text-zinc-500">Marketing campaign + customer response</div></div></div><div className="flex gap-3"><span className="mt-1 h-2 w-2 rounded-full bg-blue-400"/><div><div className="text-sm">1 growth opportunity</div><div className="text-xs text-zinc-500">Growth Agent found 43 potential leads</div></div></div><div className="flex gap-3"><span className="mt-1 h-2 w-2 rounded-full bg-emerald-400"/><div><div className="text-sm">5 tasks completed</div><div className="text-xs text-zinc-500">Your agents are making progress</div></div></div></div></div><div className="rounded-2xl border border-[#20242b] bg-[#101216] p-5"><h2 className="mb-4 font-semibold">Recent activity</h2><div className="space-y-4 text-sm"><div><div>Marketing Agent completed campaign draft.</div><div className="mt-1 text-xs text-zinc-600">9:42 PM</div></div><div><div>Growth Agent identified 3 opportunities.</div><div className="mt-1 text-xs text-zinc-600">9:21 PM</div></div><div><div>You approved customer response.</div><div className="mt-1 text-xs text-zinc-600">8:55 PM</div></div></div></div></div></div>
+      </div>
+    </section>
+  </main>
+}
