@@ -35,3 +35,7 @@ The MVP must be honest about sandboxed capabilities. External integrations are o
 8. Integrations and tool registry
 9. Analytics/credits persistence
 10. Pilot-ready deployment and QA
+
+## Deployment
+
+The AgentOS Next.js application lives at the repository root. The `store/` directory is a separate storefront application and must not be used as the Vercel Root Directory for AgentOS.
