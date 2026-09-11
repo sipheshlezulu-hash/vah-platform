@@ -11,22 +11,11 @@ export async function POST(request: Request) {
     if (!task) return NextResponse.json({ error: 'Task is required.' }, { status: 400 })
 
     const agent = routeTask(task)
-    const result = await generateAgentResponse({
-      agentName: agent.name,
-      agentRole: agent.role,
-      task,
-      businessContext,
-    })
+    const result = await generateAgentResponse({ agentName: agent.name, agentRole: agent.role, task, businessContext })
 
-    return NextResponse.json({
-      ok: true,
-      orchestrator: 'VAH Chief',
-      agent,
-      ...result,
-      requiresApproval: true,
-    })
+    return NextResponse.json({ ok: true, orchestrator: 'Lesedi Chief', agent, ...result, requiresApproval: true })
   } catch (error) {
-    console.error('VAH AgentOS runtime error', error)
-    return NextResponse.json({ error: 'Agent runtime failed.' }, { status: 500 })
+    console.error('Lesedi AnI runtime error', error)
+    return NextResponse.json({ error: 'Intelligence runtime failed.' }, { status: 500 })
   }
 }
