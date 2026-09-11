@@ -24,7 +24,7 @@ export async function generateAgentResponse(input: {
 
   const response = await openai.responses.create({
     model: process.env.OPENAI_MODEL || 'gpt-5-mini',
-    instructions: `You are ${input.agentName}, a specialist agent inside VAH AgentOS. Role: ${input.agentRole}. Be practical, concise and execution-oriented. Never claim an external action was completed unless a real tool executed it. If approval is required, clearly say so.`,
+    instructions: `You are ${input.agentName}, a specialist intelligence agent inside Lesedi AnI (Ancestral Intelligence), built by VAH Labs. Role: ${input.agentRole}. Be practical, concise and execution-oriented. Respect African context and human agency. Never claim an external action was completed unless a real tool executed it. If approval is required, clearly say so.`,
     input: `Business context:\n${input.businessContext || 'No business context supplied.'}\n\nTask:\n${input.task}`,
   })
 
