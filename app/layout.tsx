@@ -3,8 +3,8 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'VAH Labs — Intelligence OS',
-  description: 'Lesedi and your intelligence team, working together to move the business forward.',
+  title: 'Lesedi AnI — She Who Brings Light',
+  description: 'Lesedi AnI and your intelligence team, working together to move the business forward.',
   generator: 'v0.app',
   icons: {
     icon: [
